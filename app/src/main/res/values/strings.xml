@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MonitoringAndFeedback2.1</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="start_recording">Start Recording</string>
+    <string name="stop_recording">Stop Recording</string>
+    <string name="sensordashboard">Sensordashboard</string>
+    <string name="sensor">Sensor</string>
+    <string name="go_back_to_dashboard">Go Back To Dashboard</string>
+    <string name="delete_data">Delete Data</string>
+</resources>
