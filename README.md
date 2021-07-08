@@ -1,2 +1,4 @@
-#MuF_Projekt. 
-Andreas Kürzinger, Marvin Lackmann, Charles Funk 
+#MuF_Projekt.
+
+
+Teammitglieder: Andreas Kürzinger, Marvin Lackmann, Charles Funk 
