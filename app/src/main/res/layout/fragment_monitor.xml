@@ -7,7 +7,12 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="@string/displayed_accelerometer_data_id_x_y_z" />
+
+    <TextView
+        android:id="@+id/sensorData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/backToDashboard"

@@ -57,6 +57,11 @@ public class MainViewModel extends BaseViewModel {
             t.start();
         }
 
+        public LiveData<AccelerationInformation> getSensorData() {
+            return getDatabase().getAccelerationDao().getAllData();
+        }
+
+
         private SensorEventListener listener = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {

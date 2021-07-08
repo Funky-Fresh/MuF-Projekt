@@ -16,7 +16,8 @@ import java.util.List;
 public abstract class AccelerationDao {
 
     @Query("SELECT * FROM accelxyz")
-    public abstract LiveData<List<AccelerationInformation>> getAllData();
+    public abstract LiveData<AccelerationInformation> getAllData();
+    //List
 
     @Insert
     public abstract long insert(AccelerationInformation accelerationInformation);
