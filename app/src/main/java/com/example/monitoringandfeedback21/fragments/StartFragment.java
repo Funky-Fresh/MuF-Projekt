@@ -1,4 +1,4 @@
-package com.example.monitoringandfeedback21;
+package com.example.monitoringandfeedback21.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import com.example.monitoringandfeedback21.R;
+import com.example.monitoringandfeedback21.fragments.StartFragmentDirections;
 
 public class StartFragment extends Fragment {
     @Nullable

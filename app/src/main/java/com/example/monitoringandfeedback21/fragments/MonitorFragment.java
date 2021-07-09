@@ -1,4 +1,4 @@
-package com.example.monitoringandfeedback21;
+package com.example.monitoringandfeedback21.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import com.example.monitoringandfeedback21.MainViewModel;
+import com.example.monitoringandfeedback21.fragments.MonitorFragmentDirections;
+import com.example.monitoringandfeedback21.R;
 
 public class MonitorFragment extends Fragment {
     private MainViewModel mainViewModel;
@@ -27,16 +31,32 @@ public class MonitorFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_monitor,container,false);
-        TextView dataDescription = view.findViewById(R.id.textView);
+        //TextView dataDescription = view.findViewById(R.id.textView);
         TextView sensorData = view.findViewById(R.id.sensorData);
 
-        //mainViewModel.getDatabase().getAccelerationDao().getAllData().observe(getViewLifecycleOwner(), (accelerationInformation) -> {
-        //  sensorData.setText("ID: " + accelerationInformation.getId() + " X: " + accelerationInformation.getX() + " Y: " + accelerationInformation.getY() + " Z " + accelerationInformation.getZ());
-        //});
-        accelerationLiveData = (MainViewModel.AccelerationLiveData) mainViewModel.accelerationInsert();
+
+        accelerationLiveData = (MainViewModel.AccelerationLiveData) mainViewModel.getAccelerationLiveData();
+
         accelerationLiveData.getSensorData().observe(getViewLifecycleOwner(), (accelerationInformation) -> {
-            sensorData.setText("ID: " + accelerationInformation.getId() + " X: " + accelerationInformation.getX() + " Y: " + accelerationInformation.getY() + " Z " + accelerationInformation.getZ());
+            if (accelerationInformation != null) {
+                sensorData.setText("ID: " + accelerationInformation.getId() + " X: " + accelerationInformation.getX() + " Y: " + accelerationInformation.getY() + " Z " + accelerationInformation.getZ());
+            } else {
+                sensorData.setText("No data available.");
+            }
         });
+
+        // List - uncomment to use AccelerationInformation list.
+        /*
+        accelerationLiveData.getSensorDataList().observe(getViewLifecycleOwner(), (accelerationInformation) -> {
+            int idx = 20;
+            if ((!accelerationInformation.isEmpty()) & (accelerationInformation.size() >= idx)) {
+                sensorData.setText("ID: " + accelerationInformation.get(idx).getId() + " X: " + accelerationInformation.get(idx).getX() + " Y: " + accelerationInformation.get(idx).getY() + " Z " + accelerationInformation.get(idx).getZ());
+            } else {
+                sensorData.setText("No data available.");
+            }
+        });
+         */
+
 
         return view;
     }

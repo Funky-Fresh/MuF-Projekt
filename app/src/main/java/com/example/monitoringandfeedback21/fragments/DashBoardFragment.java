@@ -1,4 +1,4 @@
-package com.example.monitoringandfeedback21;
+package com.example.monitoringandfeedback21.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
+import com.example.monitoringandfeedback21.fragments.DashBoardFragmentArgs;
+import com.example.monitoringandfeedback21.fragments.DashBoardFragmentDirections;
+import com.example.monitoringandfeedback21.MainViewModel;
+import com.example.monitoringandfeedback21.R;
 
 public class DashBoardFragment extends Fragment {
     private MainViewModel mainViewModel;
@@ -46,11 +51,14 @@ public class DashBoardFragment extends Fragment {
         final TextView power = view.findViewById(R.id.vendor);
         final TextView xyz = view.findViewById(R.id.xyz);
 
+        accelerationLiveData = (MainViewModel.AccelerationLiveData) mainViewModel.getAccelerationLiveData();
+
+
+
         view.findViewById(R.id.startAccel).setOnClickListener(v -> {
 
-            accelerationLiveData = (MainViewModel.AccelerationLiveData) mainViewModel.accelerationInsert();
+            accelerationLiveData.onActive(); // wenn möglich ändern -> in andere Methode umpacken.
 
-            accelerationLiveData.onActive();
             accelerationLiveData.observe(getViewLifecycleOwner(), (accelerationInformation) -> {
                 vendor.setText("Vendor " + accelerationInformation.getSensor().getVendor());
                 name.setText("Name " + accelerationInformation.getSensor().getName());
@@ -61,6 +69,7 @@ public class DashBoardFragment extends Fragment {
                 xyz.setText("X: " + accelerationInformation.getX() + " Y: " + accelerationInformation.getY() + " Z: " + accelerationInformation.getZ());
 
             });
+
         });
 
         view.findViewById(R.id.stopAccel).setOnClickListener(v -> {
@@ -79,7 +88,7 @@ public class DashBoardFragment extends Fragment {
         view.findViewById(R.id.buttonstop).setOnClickListener(button -> {
             controller.navigate(DashBoardFragmentDirections.actionDashBoardToStartFragment());
         });
-        view.findViewById(R.id.buttonmonitor).setOnClickListener(buttonmonitor -> {
+        view.findViewById(R.id.buttonmonitor).setOnClickListener(button -> {
             controller.navigate(DashBoardFragmentDirections.actionDashBoardFragmentToMonitorFragment());
         });
     }

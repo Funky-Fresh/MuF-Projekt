@@ -10,9 +10,12 @@ import android.os.Handler;
 import android.os.Looper;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 
 import com.example.monitoringandfeedback21.viewmodel.BaseViewModel;
+
+import java.util.List;
 
 
 public class MainViewModel extends BaseViewModel {
@@ -25,8 +28,8 @@ public class MainViewModel extends BaseViewModel {
         accelerationLiveData = new AccelerationLiveData(application.getApplicationContext());
 
     }
-
-    public LiveData<AccelerationInformation> accelerationInsert() {
+    // getaccellivedata
+    public LiveData<AccelerationInformation> getAccelerationLiveData() {
         return accelerationLiveData;
     }
 
@@ -59,6 +62,11 @@ public class MainViewModel extends BaseViewModel {
 
         public LiveData<AccelerationInformation> getSensorData() {
             return getDatabase().getAccelerationDao().getAllData();
+        }
+
+        // List - to be used, see and uncomment in MonitorFragment
+        public LiveData<List<AccelerationInformation>> getSensorDataList() {
+            return getDatabase().getAccelerationDao().getAllDataList();
         }
 
 
@@ -98,14 +106,14 @@ public class MainViewModel extends BaseViewModel {
             }
         }
         @Override
-        protected void onActive() {
+        public void onActive() {
             super.onActive();
             sm.registerListener(listener, gravitySensor, SensorManager.SENSOR_DELAY_NORMAL);
             sm.registerListener(listener, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         }
 
         @Override
-        protected void onInactive() {
+        public void onInactive() {
             super.onInactive();
             sm.unregisterListener(listener);
         }

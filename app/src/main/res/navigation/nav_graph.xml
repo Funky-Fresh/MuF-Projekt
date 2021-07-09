@@ -8,7 +8,7 @@
     <fragment
         tools:layout="@layout/fragment_startfragment"
         android:id="@+id/startFragment"
-        android:name="com.example.monitoringandfeedback21.StartFragment"
+        android:name="com.example.monitoringandfeedback21.fragments.StartFragment"
         android:label="StartFragment" >
         <action
             android:id="@+id/action_startFragment_to_dashBoardFragment"
@@ -17,7 +17,7 @@
     <fragment
         tools:layout="@layout/fragment_dashboard"
         android:id="@+id/dashBoardFragment"
-        android:name="com.example.monitoringandfeedback21.DashBoardFragment"
+        android:name="com.example.monitoringandfeedback21.fragments.DashBoardFragment"
         android:label="DashBoardFragment" >
         <action
             android:id="@+id/action_dashBoard_to_startFragment"
@@ -32,7 +32,7 @@
     <fragment
         tools:layout="@layout/fragment_monitor"
         android:id="@+id/monitorFragment"
-        android:name="com.example.monitoringandfeedback21.MonitorFragment"
+        android:name="com.example.monitoringandfeedback21.fragments.MonitorFragment"
         android:label="MonitorFragment" >
         <action
             android:id="@+id/action_monitorFragment_to_dashBoardFragment"
